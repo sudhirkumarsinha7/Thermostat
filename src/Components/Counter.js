@@ -1,22 +1,22 @@
 import React, {Component} from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button, TextInput} from 'react-native';
 import {connect} from 'react-redux';
-// import {PropTypes} from 'prop-types';
-// import {inCrementCount, decCrementCount} from '../Actions/counter.js';
-
 class Counter extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   incrementCount = count => {
-    this.props.inCrementCount(count);
+    this.props.inCrementCount(count + 1);
   };
   decrementCount = count => {
-    this.props.deCrementCount(count);
+    this.props.deCrementCount(count - 1);
   };
+  onChangeText(text) {
+    this.props.changeMessage(text);
+  }
   render() {
-    const {count} = this.props.data.count;
+    const {msg, count} = this.props;
 
     return (
       <View>
@@ -39,20 +39,33 @@ class Counter extends Component {
           />
         </View>
         <Text>{JSON.stringify(this.props)}</Text>
+        <View
+          // eslint-disable-next-line react-native/no-inline-styles
+          styles={{
+            flex: 5,
+            borderWidth: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <TextInput
+            // eslint-disable-next-line react-native/no-inline-styles
+            style={{height: 40, borderColor: 'blue', borderWidth: 1}}
+            onChangeText={text => this.onChangeText(text)}
+          />
+          <Text>{msg}</Text>
+        </View>
       </View>
     );
   }
 }
-// Counter.propTypes = {
-//   inCrementCount: PropTypes.func,
-//   deCrementCount: PropTypes.func,
-// };
+
 const mapStateToProps = state => ({
-  data: state,
-  // inCrementCount: state.Counter.inCrementCount,
+  count: state.count.count,
+  msg: state.msg.msg,
 });
 
 const mapDispatchToProps = dispatch => ({
+  changeMessage: msg => dispatch({type: 'MESSAGE', msg}),
   inCrementCount: count => dispatch({type: 'INCREMENT', count}),
   deCrementCount: count => dispatch({type: 'DECREMENT', count}),
 });

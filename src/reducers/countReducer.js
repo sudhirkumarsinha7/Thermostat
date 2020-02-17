@@ -1,17 +1,17 @@
 // eslint-disable-next-line no-unused-vars
-import {INCREMENT, DECREMENT} from '../Constant/Constant.js';
+import {INCREMENT, DECREMENT, MESSAGE} from '../Constant/Constant.js';
 import {INITIAL_STATE} from '../Constant/InitialState.js';
-const countReducer = (state = INITIAL_STATE, action) => {
+const countReducer = (state = INITIAL_STATE, action: any) => {
   switch (action.type) {
     case INCREMENT:
       return {
         ...state,
-        count: action.payload + 1,
+        count: action.count,
       };
     case DECREMENT:
       return {
         ...state,
-        count: action.payload - 1,
+        count: action.count,
       };
     default:
       return state;
