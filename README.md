@@ -1,0 +1,2 @@
+# Thermostat
+add redux setup
