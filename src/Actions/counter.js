@@ -1,4 +1,4 @@
-import {INCREMENT, DECREMENT, MESSAGE} from '../Constant/Constant.js';
+import {INCREMENT, DECREMENT} from '../Constant/Constant.js';
 
 export function inCrementCount(value) {
   return {
@@ -10,11 +10,5 @@ export function deCrementCount(value) {
   return {
     type: DECREMENT,
     payload: value,
-  };
-}
-export function changeMessage(msg) {
-  return {
-    type: MESSAGE,
-    payload: msg,
   };
 }
