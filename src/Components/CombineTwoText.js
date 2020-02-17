@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Button, TextInput} from 'react-native';
+import {View, Text, TextInput} from 'react-native';
 import {connect} from 'react-redux';
 class CombineTwoText extends Component {
   constructor(props) {
@@ -8,12 +8,12 @@ class CombineTwoText extends Component {
   }
   getInputText1(text) {
     this.props.getMessage1(text);
-    //this.getInputText3() ;
+    this.getInputText3();
   }
   getInputText2(text) {
-    //this.props.getMessage2(text);
-    this.props.changeMessage(text);
-    // this.getInputText3();
+    this.props.getMessage2(text);
+    //this.props.changeMessage(text);
+    this.getInputText3();
   }
   getInputText3() {
     const {msg1, msg2} = this.props;
@@ -38,7 +38,6 @@ class CombineTwoText extends Component {
 
     return (
       <View>
-        <Text>{JSON.stringify(this.props)}</Text>
         <View
           // eslint-disable-next-line react-native/no-inline-styles
           styles={{
@@ -61,6 +60,7 @@ class CombineTwoText extends Component {
             onChangeText={text => this.getInputText2(text)}
           />
           <Text>{msg2}</Text>
+          <Text>Output</Text>
           <Text>{msg}</Text>
         </View>
       </View>

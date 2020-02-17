@@ -11,12 +11,12 @@ const getMessageReducer = (state = MSG_INITIAL_STATE, action: any) => {
     case MESSAGE1:
       return {
         ...state,
-        msg1: action.msg1,
+        msg1: action.msg,
       };
     case MESSAGE2:
       return {
         ...state,
-        msg2: action.msg2,
+        msg2: action.msg,
       };
     default:
       return state;
